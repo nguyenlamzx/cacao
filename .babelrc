@@ -1,0 +1,12 @@
+{
+  "env": {
+    "production": {
+      "plugins": ["@babel/plugin-transform-classes"]
+    }
+  },
+  "presets": [
+    ["@babel/preset-env", {
+      "useBuiltIns": "usage"
+    }]
+  ]
+}
