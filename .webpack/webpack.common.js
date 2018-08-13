@@ -1,53 +1,55 @@
 const path = require('path');
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
-const devMode = process.env.NODE_ENV !== 'production';
+const project = require('../project');
 
 module.exports = {
   entry: {
-    polyfills: './app/polyfills.js',
-    app: './app/index.js'
+    polyfills: project.src('polyfills.js'),
+    app: project.src('app.js'),
   },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
+    new CleanWebpackPlugin([
+      project.dist()
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new WorkboxPlugin.GenerateSW({
       // these options encourage the ServiceWorkers to get in there fast 
       // and not allow any straggling "old" SWs to hang around
       clientsClaim: true,
       skipWaiting: true
-    })
+    }),
+    
+    // Friendly webpack errors
+    new FriendlyErrorsWebpackPlugin(),
+
+    // prints more readable module names in the browser console on HMR updates
+    new webpack.NamedModulesPlugin(),
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, '../dist'),
+    path: project.dist(),
+    publicPath: './',
   },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
+  resolve: {
+    extensions: ['.hbs', '.html', '.ts', '.js', '.yaml', '.json'],
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        include: path.resolve(__dirname, 'app'),
+        include: project.src(),
+        exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          project.dev ? 'style-loader' : MiniCssExtractPlugin.loader,
           'css-loader',
           // 'postcss-loader',
           // {
@@ -61,7 +63,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              implementation: require("node-sass"),
+              implementation: require('node-sass'),
               fiber: require('fibers'),
             }
           },

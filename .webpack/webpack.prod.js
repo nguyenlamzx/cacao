@@ -7,6 +7,16 @@ module.exports = merge(common, {
   mode: 'production',
   devtool: 'source-map',
   optimization: {
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
     minimizer: [
       new UglifyJsPlugin({
         cache: true,

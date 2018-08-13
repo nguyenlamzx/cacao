@@ -1,20 +1,21 @@
 import _ from 'lodash';
+import printMe from './utilities/logger';
 // import printMe from './global-navigation.js';
 
-// import './styles/index.scss';
+import './styles/index.scss';
 
 window.console.log('hello');
 
-// function component() {
-//   var element = document.createElement('div');
-//   var btn = document.createElement('button');
-//   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-//   btn.innerHTML = 'Click me and check the console!';
-//   btn.onclick = printMe;
+function component() {
+  var element = document.createElement('div');
+  var btn = document.createElement('button');
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  btn.innerHTML = 'Click me and check the console!';
+  btn.onclick = printMe;
 
-//   element.appendChild(btn);
-//   return element;
-// }
+  element.appendChild(btn);
+  return element;
+}
 
 // if ('serviceWorker' in navigator) {
 //   window.addEventListener('load', () => {
@@ -26,4 +27,4 @@ window.console.log('hello');
 //   });
 // }
 
-// document.body.appendChild(component());
+document.body.appendChild(component());
