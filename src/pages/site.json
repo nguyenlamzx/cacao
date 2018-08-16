@@ -1,0 +1,16 @@
+{
+  "layout": "base",
+  "menu": [
+    {
+      "slug": "about",
+      "title": "About us"
+    }
+  ],
+  "blocks": [
+    {
+      "slug": "",
+      "component": "",
+      "data": ""
+    }
+  ]
+}

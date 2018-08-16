@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+  {% include "layout/meta.html" %}
+  {% include "layout/headlibs.html" %}
+</head>
+<body>
+  <section id="global-header">
+    <header>{{pageName}}</header>
+    <nav class="nav-bar">
+    {% for item in items %}
+      {# {% include "item.html" %} #}
+      <a href="#">{{item.title}}</a>
+    {% endfor %}
+    </nav>
+  </section>
+  <main id="app" role="main">
+  {% for blockItem in blocks %}
+    This is the default content
+  {% endblock %}
+  </main>
+  <footer id="global-footer">Copyright 2013</footer>
+  {% include "layout/footlibs.html" %}
+</body>
+</html>
