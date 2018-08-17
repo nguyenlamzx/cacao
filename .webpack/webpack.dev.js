@@ -9,6 +9,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'inline-source-map',
   plugins: [
+    new NpmInstallPlugin(),
     // enable HMR globally
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -21,6 +22,7 @@ module.exports = merge(common, {
     // noInfo: true,
     before(app) {
       app.get('/', (req, res) => {
+        // res.render(project.src('pages/index.html'));
         res.send(fs.readFileSync(project.src('index.html'), 'utf-8'));
       });
     },

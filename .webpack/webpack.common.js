@@ -41,6 +41,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.hbs$/,
+        loader: "handlebars-loader",
+      },
+      {
         test: /\.js$/,
         include: project.src(),
         exclude: /node_modules/,
@@ -69,6 +73,6 @@ module.exports = {
           },
         ],
       },
-    ]
+    ],
   },
 };
