@@ -1,10 +1,10 @@
-import _ from 'lodash';
-import printMe from './utilities/logger';
+// import _ from 'lodash';
+// import printMe from './utilities/logger';
 // import printMe from './global-navigation.js';
 
-import './styles/index.scss';
+import './styles/main.scss';
 
-window.console.log('hello');
+// window.console.log('hello');
 
 function component() {
   var element = document.createElement('div');

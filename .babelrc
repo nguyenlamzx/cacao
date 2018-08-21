@@ -1,11 +1,26 @@
 {
   "env": {
     "production": {
-      "plugins": ["@babel/plugin-transform-classes"]
+      "plugins": [
+        "babel-plugin-transform-classes",
+        ["babel-plugin-transform-runtime", {
+          "helpers": true,
+          "polyfill": false,
+          "regenerator": false,
+          "moduleName": "babel-runtime"
+        }],
+        "transform-class-properties",
+        "transform-flow-strip-types",
+        "transform-object-rest-spread",
+        "transform-strict-mode",
+        ["babel-plugin-transform-builtin-extend", {
+          "globals": ["Error", "Array"]
+        }]
+      ]
     }
   },
   "presets": [
-    ["@babel/preset-env", {
+    ["env", {
       "useBuiltIns": "usage"
     }]
   ]

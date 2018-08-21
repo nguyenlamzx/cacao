@@ -1,25 +1,26 @@
 const path = require('path');
-
 const dev = process.env.NODE_ENV !== 'production';
-const package = require('./package');
+const pkg = require('./package');
 
 let project = {
   dev,
-  src: (pathString = __dirname) => {
+  root: () => __dirname,
+  src: (pathString = '.') => {
     return path.resolve(
-      path.join(package.directories.source, pathString)
+      pkg.directories.source, pathString
     );
   },
-  dist: (pathString = __dirname) => {
+  dist: (pathString = '.') => {
     return path.resolve(
-      path.join(package.directories.dist, pathString)
+      pkg.directories.dist, pathString
     );
   },
-  static: (pathString = __dirname) => {
+  static: (pathString = '.') => {
     return path.resolve(
-      path.join(package.directories.static, pathString)
+      pkg.directories.static, pathString
     );
   },
+  context: require('require-context'),
 };
 
 module.exports = project;

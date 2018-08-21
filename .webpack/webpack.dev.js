@@ -22,7 +22,7 @@ module.exports = merge(common, {
     // noInfo: true,
     before(app) {
       app.get('/', (req, res) => {
-        // res.render(project.src('pages/index.html'));
+        // res.render(project.src('views/index.html'));
         res.send(fs.readFileSync(project.src('index.html'), 'utf-8'));
       });
     },
