@@ -1,1 +1,1 @@
-export default class Component {}
+export class Component {}
