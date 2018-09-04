@@ -21,11 +21,8 @@ module.exports = function createPageRoutersMiddleware() {
     if (isNotPage(pathReq, dataPath)) {
       return next();
     }
-    res.locals = merge(
-      res.locals, { body, query } = req, baseData, require(dataPath)
-    );
+    res.locals = merge(res.locals, ({ body, query } = req), baseData, require(dataPath));
     console.log('locals', res.locals)
-    res.render(paths.appHtml, () => next());
+    return res.render(paths.appHtml, () => next());
   };
 };
- 

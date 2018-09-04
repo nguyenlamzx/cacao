@@ -2,7 +2,7 @@ module.exports = {
   "env": {
     "production": {
       "plugins": [
-        "babel-plugin-transform-classes",
+        "@babel/plugin-transform-classes",
         [
           "@babel/plugin-transform-runtime",
           {
@@ -34,7 +34,7 @@ module.exports = {
   "presets": [
     [
       "@babel/preset-env",
-      "@babel/typescript",
+      "@babel/preset-typescript",
       {
         "useBuiltIns": "usage"
       }
