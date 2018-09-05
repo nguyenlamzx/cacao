@@ -25,7 +25,17 @@
   <body>
     {{> blocks/noscript }}
     {{> blocks/unsupported-browser }}
-    <div id="root"></div>
+    <div id="root">
+    {{body}}
+    {{#with body }}
+      {{#each blocks as |block|}}
+        {{block}}
+        {{#if block}}
+        {{!-- {{[component] data}} --}}
+        {{/if}}
+      {{/each}}
+    {{/with}}
+    </div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

@@ -1,5 +1,3 @@
-const merge = require('webpack-merge');
-
 module.exports = {
   debug: true,
   env: {

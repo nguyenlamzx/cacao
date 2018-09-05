@@ -30,6 +30,7 @@ module.exports = {
         hbs: 'never',
       },
     ],
+    'import/prefer-default-export': 0,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-console': process.env.NODE_ENV === 'production' ? 1 : 0,
