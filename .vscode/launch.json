@@ -29,6 +29,18 @@
       "protocol": "inspector",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "build",
+      "program": "${workspaceFolder}/node_modules/.bin/webpack-dev-server",
+      "args": [
+        "--basedir",
+        "${workspaceFolder}/config/webpack.config.dev.js"
+      ],
+      "autoAttachChildProcesses": true,
+      "stopOnEntry": true
     }
   ]
 }
