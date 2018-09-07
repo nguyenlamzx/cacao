@@ -39,6 +39,7 @@ function getServedPath(appPackageJson) {
 module.exports = {
   dotenv: resolveApp('.env'),
   appBuild: resolveApp('build'),
+  appServer: resolveApp('server'),
   hbsHelpers: resolveApp('config/helpers/hbs'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.hbs'),
